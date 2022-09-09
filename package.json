@@ -1,0 +1,15 @@
+{
+  "name": "assignmentG",
+  "version": "1.0.0",
+  "description": "Using pure node.js to create a server",
+  "main": "index.js",
+  "author": "Barny Victor",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
