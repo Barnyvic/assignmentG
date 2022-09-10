@@ -1,1 +1,12 @@
-[{"UserName":"dgummary0","Password":"wklz0C","role":"Admin"},{"UserName":"BarnyVictor","Password":"Yungvicky007","role":"Visitor"},{"UserName":"JamesOkoro","Password":"jamezy","role":"Visitor"},{"UserName":"GoodrichOkoro","Password":"Yungvicky007","role":"Visitor"},{"UserName":"Perecinto","Password":"Vickycinto007","role":"Admin"}]
+[
+  { "UserName": "dgummary0", "Password": "wklz0C", "role": "Admin" },
+  { "UserName": "BarnyVictor", "Password": "Yungvicky007", "role": "Visitor" },
+  { "UserName": "JamesOkoro", "Password": "jamezy", "role": "Visitor" },
+  {
+    "UserName": "GoodrichOkoro",
+    "Password": "Yungvicky007",
+    "role": "Visitor"
+  },
+  { "UserName": "Perecinto", "Password": "Vickycinto007", "role": "Admin" },
+  { "UserName": "Oma-chika", "Password": "omalay", "role": "Visitor" }
+]

@@ -30,7 +30,8 @@ const createNewUser = function (req, res) {
             res.end("body cant be empty")
         }
         const newUser = JSON.parse(paresData)
-        
+        console.log(newUser);
+        isEmpty(newUser,res) 
         fs.readFile(usersDataDB, "utf8", (err, user) =>{
             if (err) {
                 console.log(err);
@@ -43,18 +44,23 @@ const createNewUser = function (req, res) {
            if (userExists) return res.writeHead(404).end("user already exists");
             const allUsers = [...listOfUsers,newUser]
 
-        fs.writeFile(usersDataDB,JSON.stringify(allUsers),(err)=>{
-            if(err){
-            res.writeHead(500)
-            res.end("an error occured while writing users to the database")
-            }
-            res.end(JSON.stringify(allUsers));
-        })
+            fs.writeFile(usersDataDB,JSON.stringify(allUsers),(err)=>{
+                if(err){
+                res.writeHead(500)
+                res.end("an error occured while writing users to the database")
+                }
+                res.end(JSON.stringify(allUsers));
+            })
         })
     })
 }
 
-
+// check if the object is empty
+const isEmpty = (obj,res) =>{
+   if( Object.keys(obj).length === 0) {
+    res.end(JSON.stringify({message: 'Object cannot be empty'}))
+   } 
+} 
 
 
 
