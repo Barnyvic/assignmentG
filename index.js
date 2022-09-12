@@ -4,7 +4,7 @@ const Localhost = "localhost";
 const fs = require('fs');
 const path = require('path');
 const { getAllUsers, createNewUser } = require('./Router/User-routers')
-const {createNewBook,getAllBooks,deleteBook} = require('./Router/books-router')
+const {createNewBook,getAllBooks,deleteBook,updateBook,Loanbook,Returnbook} = require('./Router/books-router')
 const usersDataDB = path.join(__dirname, 'db', 'Users.json')
 const authenticateGetUsers = require('./Router/authenticateUsers')
 
@@ -49,6 +49,43 @@ const requestsHandlers = async (req, res) => {
         authenticateGetUsers(req,res,["Admin"])
         .then((Book)=>{
             deleteBook(req, res,Book);
+        })
+        .catch((err)=>{
+            res.writeHead(400);
+            res.end(JSON.stringify({
+            message:err
+        }))
+        });
+    }
+
+    else if (req.method === "PUT" && req.url === "/books") {
+        authenticateGetUsers(req,res,["Admin"])
+        .then((Book)=>{
+            updateBook(req, res,Book);
+        })
+        .catch((err)=>{
+            res.writeHead(400);
+            res.end(JSON.stringify({
+            message:err
+        }))
+        });
+    }
+    else if (req.method === "POST" && req.url === "/books/loanbook") {
+        authenticateGetUsers(req,res,["Admin","Visitor"])
+        .then((Book)=>{
+            Loanbook(req, res,Book);
+        })
+        .catch((err)=>{
+            res.writeHead(400);
+            res.end(JSON.stringify({
+            message:err
+        }))
+        });
+    }
+    else if (req.method === "POST" && req.url === "/books/return") {
+        authenticateGetUsers(req,res,["Admin","Visitor"])
+        .then((Book)=>{
+            Returnbook(req, res,Book);
         })
         .catch((err)=>{
             res.writeHead(400);
